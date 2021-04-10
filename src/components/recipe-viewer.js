@@ -2,7 +2,7 @@ import React, {useState, useEffect } from 'react'; // We are using React Hooks h
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import axios from 'axios'; // This is the HTTP library used to make calls to the backend
-const url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
+var url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
 
 
 function RecipeViewer(props) {
@@ -14,6 +14,10 @@ function RecipeViewer(props) {
     const getRecipes = () => {
         /* This function makes an AJAX call to the server specified in REACT_APP_SERVER_URL
         and updates the "recipes" state to an array containing each recipe object. */
+
+        if (props.searchTerm != null) {
+            url = url + "?name=" + props.searchTerm
+        }
         axios.get(url)
         .then(res => {
             setRecipes(res.data);
@@ -34,16 +38,6 @@ function RecipeViewer(props) {
         JSX object to display on the page. */
 
         let r = props.rdata;
-        /*
-                <h1>{r.name}</h1>
-                <p>By {r.author}</p>
-                <p>id: {r._id}</p>
-                <br/>{r.image_url ? <img src={r.image_url}/> : ""}<br/>
-                <b>Description: </b> {r.description}<br/>
-                <b>Tags: </b> {r.tags}<br/>
-                <b>Ingredients: </b><br/> {r.ingredients}<br/>
-                <b>Instruction:</b> <br/>
-                {r.ingredients}<br/> */
         
         return (
             <div className = "card">
@@ -62,8 +56,6 @@ function RecipeViewer(props) {
         )
     }
 
-
-    
     return (
         // Gets the recipes object array and returns a RecipeCard of each recipe.
         <div className="recipe_viewer">
