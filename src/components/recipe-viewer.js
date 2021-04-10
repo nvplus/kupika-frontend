@@ -59,8 +59,6 @@ function RecipeViewer(props) {
         </div>
         )
     }
-
-
     
     return (
         // Gets the recipes object array and returns a RecipeCard of each recipe.
