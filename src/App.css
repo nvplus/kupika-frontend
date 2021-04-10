@@ -3,15 +3,25 @@
 }
 
 .recipe_card {
-  padding: 10px;
-  display: block;
-  border: 1px solid black;
-  width: 20%;
-  height: 30%;
-  overflow:hidden
+
+}
+
+.card{
+  align-content:center;
 }
 
 .recipe_card img {
   height: 90px;
   width: 90px;
+}
+
+
+.nav{
+  float: left;
+}
+
+.search{
+  float:right;
+  margin-left: 5em; 
+  margin-right: 0;
 }
