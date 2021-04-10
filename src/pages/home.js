@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import RecipeViewer from '../components/recipe-viewer'
 
@@ -17,8 +16,8 @@ const Home = () => (
         <h1 className="header">Kupika</h1>
         <div className="nav">
           <Breadcrumb>
-            <Breadcrumb.Item><Link to="/">Recipes</Link></Breadcrumb.Item>
-            <Breadcrumb.Item><Link to="/add">Create a Recipe</Link></Breadcrumb.Item>
+            <Breadcrumb.Item active>Recipes</Breadcrumb.Item>
+            <Breadcrumb.Item href="/add">Create a Recipe</Breadcrumb.Item>
           </Breadcrumb>
         </div>
         <div className="search">
