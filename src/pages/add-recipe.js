@@ -25,7 +25,7 @@ function AddRecipe() {
             "ingredients": form[3].value.trim().split(","),
             "instructions": form[4].value.trim(),
             "image_url": form[5].value.trim(),
-            "tags_list": form[6].value.trim().split(",")
+            "tags": form[6].value.trim().split(",")
         }
         
         const json = JSON.stringify(recipe)
