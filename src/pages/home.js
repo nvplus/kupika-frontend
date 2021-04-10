@@ -12,21 +12,7 @@ import { Form, FormControl } from 'react-bootstrap';
 
 const Home = () => (
     <Container className="p-3">
-      <Jumbotron>
-        <h1 className="header">Kupika</h1>
-        <div className="nav">
-          <Breadcrumb>
-            <Breadcrumb.Item active>Recipes</Breadcrumb.Item>
-            <Breadcrumb.Item href="/add">Create a Recipe</Breadcrumb.Item>
-          </Breadcrumb>
-        </div>
-        <div className="search">
-          <Form inline>
-            <FormControl type="text" placeholder="Search" />
-            <Button type="submit">Submit</Button>
-          </Form>
-        </div>
-      </Jumbotron>
+
       <RecipeViewer></RecipeViewer>
     </Container>
   );
