@@ -17,7 +17,7 @@ import RecipePage from "../pages/recipes";
 const Home = () => (
     <Container className="p-3">
       <Header/>
-      <RecipePage/>
+      <RecipeViewer/>
     </Container>
   );
   

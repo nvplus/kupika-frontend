@@ -7,7 +7,9 @@ import { ListGroupItem } from 'react-bootstrap';
 import { Badge } from 'react-bootstrap';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Header from '../components/header';
 import axios from 'axios'; // This is the HTTP library used to make calls to the backend
+import {useHistory} from 'react-router-dom';
 const url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
 
 
@@ -40,22 +42,34 @@ function RecipePage(props) {
 
         let r = props.rdata;
 
+        const history = useHistory();
+        
+        function on_click_submit(e) {
+            e.preventDefault();
+
+            history.push("/" + r._id );
+        
+        }
+
         return (
-            <Jumbotron >
-                <Container className="p-3">
-                    <Card.Header>{r.name} <Badge variant="primary" className="text-center">creamy,eggy{r.tags}</Badge>  <Button variant="danger">Delete</Button></Card.Header>
-                    <Card className="text-center">
-                        <Card.Body>
-                            <Card.Img fluid src ={r.image_url}/>
-                            <Card.Title>{r.description}</Card.Title>
-                            <Card.Text>
-                                {r.ingredients}
-                            </Card.Text>
-                        </Card.Body>
-                        <Card.Footer className="text-muted">{r.date}</Card.Footer>
-                    </Card>
-                </Container>
-            </Jumbotron>
+            <Container className="p-3">
+                <Header/>
+                <Jumbotron>
+                    <Container className="p-3">
+                        <Card.Header>{r.name} <Badge variant="primary" className="text-center">creamy,eggy{r.tags}</Badge>  <Button variant="danger">Delete</Button></Card.Header>
+                        <Card className="text-center">
+                            <Card.Body>
+                                <Card.Img fluid src={r.image_url} />
+                                <Card.Title>{r.description}</Card.Title>
+                                <Card.Text>
+                                    {r.ingredients}
+                                </Card.Text>
+                            </Card.Body>
+                            <Card.Footer className="text-muted">{r.date}</Card.Footer>
+                        </Card>
+                    </Container>
+                </Jumbotron>
+            </Container>
         )
     }
 

@@ -1,6 +1,8 @@
-import React, {useState, useEffect } from 'react'; // We are using React Hooks here because class components are cringe
+import React, { useState, useEffect } from 'react'; // We are using React Hooks here because class components are cringe
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import {useHistory} from 'react-router-dom';
+
 import axios from 'axios'; // This is the HTTP library used to make calls to the backend
 var url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
 
@@ -8,7 +10,7 @@ var url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look li
 function RecipeViewer(props) {
     /* The RecipeViewer component makes an AJAX call to the 
     backend upon load and displays all the recipes found. */
-    
+
     const [recipes, setRecipes] = useState([]); // This is the recipes hook. Call it with "recipes", update it with a new state using "setRecipes"
 
     const getRecipes = () => {
@@ -19,15 +21,15 @@ function RecipeViewer(props) {
             url = url + "?name=" + props.searchTerm
         }
         axios.get(url)
-        .then(res => {
-            setRecipes(res.data);
-            console.log(res.data)
-            console.log(`Successfully pulled ${res.data.length} recipes`)
-        })
-        .catch (err => console.log(err))
+            .then(res => {
+                setRecipes(res.data);
+                console.log(res.data)
+                console.log(`Successfully pulled ${res.data.length} recipes`)
+            })
+            .catch(err => console.log(err))
     }
 
-    useEffect(() => {   
+    useEffect(() => {
         // This is run when the page loads, and calls the getRecipes function
         getRecipes();
     }, []);
@@ -37,29 +39,38 @@ function RecipeViewer(props) {
         properties like name, ingredients etc and returns a nicely formatted
         JSX object to display on the page. */
 
-        let r = props.rdata;
-        
-        return (
-            <div className = "card">
 
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="flush" src={r.image_url} />
-                <Card.Body>
-                    <Card.Title>{r.name}</Card.Title>
-                    <Card.Text>
-                        {r.description}
-                    </Card.Text>
-                    <Button variant="primary">Go to Recipe</Button>
-                </Card.Body>
-            </Card>
-        </div>
+        const history = useHistory();
+        let r = props.rdata;
+
+        function on_click_submit(e) {
+            e.preventDefault();
+
+            history.push("/" + r._id );
+        
+        }
+
+        return (
+            <div className="card">
+
+                <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="flush" src={r.image_url} />
+                    <Card.Body>
+                        <Card.Title>{r.name}</Card.Title>
+                        <Card.Text>
+                            {r.description}
+                        </Card.Text>
+                        <Button onClick= {on_click_submit} >Go to Recipe</Button>
+                    </Card.Body>
+                </Card>
+            </div>
         )
     }
 
     return (
         // Gets the recipes object array and returns a RecipeCard of each recipe.
         <div className="recipe_viewer">
-            {recipes ? Object.keys(recipes).map(r => <RecipeCard key={recipes[r]._id} rdata={recipes[r]}/>): <p>empty</p>}
+            {recipes ? Object.keys(recipes).map(r => <RecipeCard key={recipes[r]._id} rdata={recipes[r]} />) : <p>empty</p>}
         </div>
     )
 }
