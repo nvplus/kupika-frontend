@@ -1,10 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import  RecipeViewer from './components/recipe-viewer'
+import {Route, BrowserRouter as Router} from 'react-router-dom';
+import Home from './pages/home';
 
 function App() {
   return (
-    <RecipeViewer/>
+    <Router>
+      <Route path="/" component={Home} />
+    </Router>
   );
 }
 
