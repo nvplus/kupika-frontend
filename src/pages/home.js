@@ -13,8 +13,8 @@ import Header from '../components/header';
 
 const Home = () => (
     <Container className="p-3">
-      <Header></Header>
-      <RecipeViewer></RecipeViewer>
+      <Header/>
+      <RecipeViewer/>
     </Container>
   );
   
