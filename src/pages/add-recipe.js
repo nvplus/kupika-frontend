@@ -34,17 +34,16 @@ function AddRecipe() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        
         })
         .then(res => {
             console.log(res.data._id);
         })
         .catch (err => {
-                console.log(err.response.data.message)
-                alert("Name, author, ingredients list, and instructions are required. Please check your submission again.");
+
+                alert("An error ocurred while trying to add the recipe. Make sure to name, author, ingredients list, and instructions are filled in.");
+                setIsSubmitClicked(false);
             }   
         )
-
     }
 
     return (
