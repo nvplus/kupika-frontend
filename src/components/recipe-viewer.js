@@ -17,6 +17,7 @@ function RecipeViewer(props) {
         axios.get(url)
         .then(res => {
             setRecipes(res.data);
+            console.log(res.data)
             console.log(`Successfully pulled ${res.data.length} recipes`)
         })
         .catch (err => console.log(err))
