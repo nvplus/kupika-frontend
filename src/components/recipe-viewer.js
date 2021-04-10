@@ -46,7 +46,6 @@ function RecipeViewer(props) {
         
         return (
             <div className = "card">
-
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="flush" src={r.image_url} />
                 <Card.Body>
@@ -54,7 +53,7 @@ function RecipeViewer(props) {
                     <Card.Text>
                         {r.description}
                     </Card.Text>
-                    <Button variant="primary">Go to Recipe</Button>
+                    
                 </Card.Body>
             </Card>
         </div>

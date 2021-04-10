@@ -9,12 +9,13 @@ import Button from 'react-bootstrap/Button';
 import Breadcrumb from 'react-bootstrap/Breadcrumb'
 import { Form, FormControl } from 'react-bootstrap';
 import Header from '../components/header';
+import RecipePage from "../pages/recipes";
 
 
 const Home = () => (
     <Container className="p-3">
       <Header/>
-      <RecipeViewer/>
+      <RecipePage/>
     </Container>
   );
   

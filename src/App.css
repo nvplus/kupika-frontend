@@ -9,6 +9,10 @@
 .recipe_card img {
   height: 90px;
   width: 90px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 100vh;
 }
 
 
@@ -20,4 +24,16 @@
   float:right;
   margin-left: 5em; 
   margin-right: 0;
+}
+.recipePage{
+
+  margin-left: calc(90% - 52 vw);
+  width: 260vw;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 50vh;
 }
