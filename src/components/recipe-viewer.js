@@ -1,6 +1,9 @@
 import React, {useState, useEffect } from 'react'; // We are using React Hooks here because class components are cringe
+import { Card } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import axios from 'axios'; // This is the HTTP library used to make calls to the backend
 const url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
+
 
 function RecipeViewer(props) {
     /* The RecipeViewer component makes an AJAX call to the 
@@ -30,11 +33,8 @@ function RecipeViewer(props) {
         JSX object to display on the page. */
 
         let r = props.rdata;
-        
-        return (
-            <div className="recipe_card">
-                
-                <h3>{r.name}</h3>
+        /*
+                <h1>{r.name}</h1>
                 <p>By {r.author}</p>
                 <p>id: {r._id}</p>
                 <br/>{r.image_url ? <img src={r.image_url}/> : ""}<br/>
@@ -42,12 +42,27 @@ function RecipeViewer(props) {
                 <b>Tags: </b> {r.tags}<br/>
                 <b>Ingredients: </b><br/> {r.ingredients}<br/>
                 <b>Instruction:</b> <br/>
-                {r.ingredients}<br/>
-                
-            </div>
+                {r.ingredients}<br/> */
+        
+        return (
+            <div className = "card">
+
+            <Card style={{ width: '18rem' }}>
+                <Card.Img variant="flush" src={r.image_url} />
+                <Card.Body>
+                    <Card.Title>{r.name}</Card.Title>
+                    <Card.Text>
+                        {r.description}
+                    </Card.Text>
+                    <Button variant="primary">Go to Recipe</Button>
+                </Card.Body>
+            </Card>
+        </div>
         )
     }
 
+
+    
     return (
         // Gets the recipes object array and returns a RecipeCard of each recipe.
         <div className="recipe_viewer">
