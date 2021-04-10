@@ -36,11 +36,23 @@ function AddRecipe() {
             }
         })
         .then(res => {
-            console.log(res.data._id);
+            let redir = url + "/" + res.data._id
+            alert("Recipe was added! The recipe is visible at: " + redir)
+            for (let i = 0; i<form.length; i++) {
+                form[i].value = "";
+            }
+            setIsSubmitClicked(false)
         })
         .catch (err => {
+                try {
+                    console.log(err.response.data)
 
-                alert("An error ocurred while trying to add the recipe. Make sure to name, author, ingredients list, and instructions are filled in.");
+                    alert("An error ocurred while trying to add the recipe! \n\n" + err.response.data.message);
+                }
+                catch {
+                    alert("Server error! Could not add recipe.")
+                }
+
                 setIsSubmitClicked(false);
             }   
         )
