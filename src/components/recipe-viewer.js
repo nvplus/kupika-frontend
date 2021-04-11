@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'; // We are using React Hooks here because class components are cringe
 import { Card } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
+import { CardColumns } from 'react-bootstrap';
 import axios from 'axios'; // This is the HTTP library used to make calls to the backend
 var url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
 
@@ -46,13 +47,10 @@ function RecipeViewer(props) {
         function on_click_submit(e) {
             e.preventDefault();
 
-            history.push("/" + r._id );
-        
+            history.push("/" + r._id);
+
         }
-
-        return (
-            <div className="card">
-
+        /*
                 <Card style={{ width: '18rem' }}>
                     <Card.Img variant="flush" src={r.image_url} />
                     <Card.Body>
@@ -63,7 +61,22 @@ function RecipeViewer(props) {
                         <Button onClick= {on_click_submit} >Go to Recipe</Button>
                     </Card.Body>
                 </Card>
-            </div>
+                */
+        return (
+            
+                
+                    <Card>
+                        <Card.Img variant="top" src={r.image_url}/>
+                            <Card.Body>
+                                <Card.Title>{r.name}</Card.Title>
+                                <Card.Text>{r.description}</Card.Text>
+                                <Button onClick= {on_click_submit} >Go to Recipe</Button>
+                            </Card.Body>
+                    </Card>
+
+                
+
+            
         )
     }
 

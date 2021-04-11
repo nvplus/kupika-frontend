@@ -47,11 +47,6 @@ div{
 
 }
 
-
-.recipe_square{
-
-
-}
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;

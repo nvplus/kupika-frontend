@@ -43,12 +43,12 @@ function RecipePage(props) {
         let r = props.rdata;
 
         const history = useHistory();
-        
-        function on_click_submit(e) {
+        function on_click_delete(e) {
             e.preventDefault();
 
-            history.push("/" + r._id );
-        
+            axios.get("http://localhost:3001/"+"recipes/"+ r._id +"/delete"); // delete function
+            history.push("/");
+            window.location.reload();
         }
 
         return (
@@ -56,7 +56,7 @@ function RecipePage(props) {
                 <Header/>
                 <Jumbotron>
                     <Container className="p-3">
-                        <Card.Header>{r.name} <Badge variant="primary" className="text-center">creamy,eggy{r.tags}</Badge>  <Button variant="danger">Delete</Button></Card.Header>
+                        <Card.Header>{r.name} <Badge variant="primary" className="text-center">creamy,eggy{r.tags}</Badge>  <Button onClick ={on_click_delete} variant="danger">Delete</Button></Card.Header>
                         <Card className="text-center">
                             <Card.Body>
                                 <Card.Img fluid src={r.image_url} />

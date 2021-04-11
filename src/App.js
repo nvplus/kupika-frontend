@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Route path="/" exact component={Home} />
       <Route path="/add" exact component={AddRecipe} />
-      <Route path="/search/:searchTerm" component={Search} />
+      <Route path="/search/:searchTerm" exact component={Search} />
       <Route  path="/:id" exact component={RecipePage} />
     </Router>
   );

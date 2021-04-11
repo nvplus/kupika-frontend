@@ -1,10 +1,8 @@
 .recipe_viewer {
  display:flex;
+ flex-wrap: wrap;
 }
 
-.card{
-  align-content:center;
-}
 
 .recipe_card img {
   height: 90px;
@@ -20,6 +18,15 @@
   float: left;
 }
 
+.card{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  
+}
+
 .search{
   float:right;
   margin-left: 5em; 
@@ -29,11 +36,4 @@
 
   margin-left: calc(90% - 52 vw);
   width: 260vw;
-}
-
-.card-img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  max-height: 50vh;
 }
