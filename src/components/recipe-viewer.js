@@ -47,7 +47,7 @@ function RecipeViewer(props) {
         function on_click_submit(e) {
             e.preventDefault();
 
-            history.push("/" + r._id);
+            history.push("/recipe/" + r._id);
 
         }
         /*
@@ -64,7 +64,6 @@ function RecipeViewer(props) {
                 */
         return (
             
-                
                     <Card className= "cardBox">
                         <Card.Body>
                                 <Card.Img className = "cardImg" bsPrefix="cardImg" rounded src={r.image_url} fluid  />
@@ -73,10 +72,6 @@ function RecipeViewer(props) {
                                 <Button onClick= {on_click_submit} >Go to Recipe</Button>
                             </Card.Body>
                     </Card>
-
-                
-
-            
         )
     }
 

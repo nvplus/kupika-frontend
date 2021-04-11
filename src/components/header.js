@@ -30,7 +30,7 @@ function Header() {
       <h1 className="header">Kupika</h1>
       <div className="nav">
         <Breadcrumb>
-          <Breadcrumb.Item href="/">Recipes</Breadcrumb.Item>
+          <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
           <Breadcrumb.Item href="/add">Create a Recipe</Breadcrumb.Item>
         </Breadcrumb>
       </div>

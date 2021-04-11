@@ -52,13 +52,14 @@ function RecipePage(props) {
             <Jumbotron>
                     <Container className="p-3">
                         <Card.Header>{r.name} <Badge variant="primary" className="text-center">{r.tags.toString()}</Badge>  <Button onClick ={on_click_delete} variant="danger">Delete</Button></Card.Header>
-                        <Card className="text-center">
+                        <Card className="text-center recipePage">
                             <Card.Body>
                                 <Card.Img fluid src={r.image_url} />
                                 <Card.Title>{r.description}</Card.Title>
                                 <Card.Text>
-                                    {r.ingredients}
+                                    Ingredients: {r.ingredients.toString()}
                                 </Card.Text>
+                                <Card.Text>{r.instructions}</Card.Text>
                             </Card.Body>
                             <Card.Footer className="text-muted">{r.date}</Card.Footer>
                         </Card>

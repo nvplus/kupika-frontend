@@ -1,6 +1,9 @@
 .recipe_viewer {
  display:flex;
  flex-wrap: wrap;
+ width:100%;
+ align-content: flex-start;
+ margin-bottom:auto;
 }
 
 
@@ -22,17 +25,20 @@
 }
 
 .cardImg{
-  width: 260px;
+  width: 100%;
   height: 260px;
   border-top-left-radius: calc(.25rem - 1px);
   border-top-right-radius: calc(.25rem - 1px);
+  padding-bottom: 6px;
 }
 
 .cardBox{
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom:auto;
   align-items: center;
-  float:center;
+  float:left;
+  width: 30%;
 }
 
 
@@ -54,8 +60,11 @@
   margin-left: 5em; 
   margin-right: 0;
 }
-.recipePage{
+.recipePage img{
 
-  margin-left: calc(90% - 52 vw);
-  width: 260vw;
+  width: 560px;
+  height: 560px;
+  margin-left: auto;
+  margin-right: auto;
+
 }
