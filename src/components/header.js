@@ -31,6 +31,7 @@ function Header() {
       <div className="nav">
         <Breadcrumb>
           <Breadcrumb.Item href="/">Home</Breadcrumb.Item>
+          <Breadcrumb.Item href="/about">About</Breadcrumb.Item>
           <Breadcrumb.Item href="/add">Create a Recipe</Breadcrumb.Item>
         </Breadcrumb>
       </div>

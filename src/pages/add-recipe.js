@@ -75,7 +75,7 @@ function AddRecipe() {
                 </Form.Group>
 
                 <Form.Group>
-                    <Form.Label>Description</Form.Label>
+                    <Form.Label>Description*</Form.Label>
                     <Form.Control type="input" disabled={isSubmitClicked}/>
                 </Form.Group>
 
