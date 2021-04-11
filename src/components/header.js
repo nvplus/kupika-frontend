@@ -18,8 +18,11 @@ function Header() {
     
     let searchTerm = e.target.elements[0].value;
 
-    if (searchTerm)
+    if (searchTerm) {
       history.push("/search/" +searchTerm );
+      window.location.reload();
+    }
+
   }
   
   return (  

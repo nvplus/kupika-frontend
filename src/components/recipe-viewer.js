@@ -40,43 +40,24 @@ function RecipeViewer(props) {
         properties like name, ingredients etc and returns a nicely formatted
         JSX object to display on the page. */
 
-
         const history = useHistory();
         let r = props.rdata;
 
         function on_click_submit(e) {
             e.preventDefault();
 
-            history.push("/" + r._id);
-
+            history.push("/recipe/" + r._id);
         }
-        /*
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="flush" src={r.image_url} />
-                    <Card.Body>
-                        <Card.Title>{r.name}</Card.Title>
-                        <Card.Text>
-                            {r.description}
-                        </Card.Text>
-                        <Button onClick= {on_click_submit} >Go to Recipe</Button>
-                    </Card.Body>
-                </Card>
-                */
-        return (
-            
-                
+
+        return (        
                     <Card>
                         <Card.Img variant="top" src={r.image_url}/>
                             <Card.Body>
                                 <Card.Title>{r.name}</Card.Title>
                                 <Card.Text>{r.description}</Card.Text>
-                                <Button onClick= {on_click_submit} >Go to Recipe</Button>
+                                <Button onClick={on_click_submit} >Go to Recipe</Button>
                             </Card.Body>
-                    </Card>
-
-                
-
-            
+                    </Card>            
         )
     }
 

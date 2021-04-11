@@ -9,24 +9,23 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Header from '../components/header';
 import axios from 'axios'; // This is the HTTP library used to make calls to the backend
-import {useHistory} from 'react-router-dom';
-const url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
+import {useHistory, useParams} from 'react-router-dom';
+var url = process.env.REACT_APP_SERVER_URL + "recipes"; // makes the url look like http://localhost:3000/recipes or something
 
 
 function RecipePage(props) {
     /* The RecipeViewer component makes an AJAX call to the 
     backend upon load and displays all the recipes found. */
 
-    const [recipes, setRecipes] = useState([]); // This is the recipes hook. Call it with "recipes", update it with a new state using "setRecipes"
+    const [recipes, setRecipes] = useState(); // This is the recipes hook. Call it with "recipes", update it with a new state using "setRecipes"
+    const {id} = useParams();
 
     const getRecipes = () => {
-        /* This function makes an AJAX call to the server specified in REACT_APP_SERVER_URL
-        and updates the "recipes" state to an array containing each recipe object. */
-        axios.get(url)
+        axios.get(url+'/'+id)
             .then(res => {
                 setRecipes(res.data);
-                console.log(`Successfully pulled ${res.data.length} recipes`)
             })
+
             .catch(err => console.log(err))
     }
 
@@ -36,27 +35,23 @@ function RecipePage(props) {
     }, []);
 
     function RecipeCard(props) {
-        /* Sub-component to display cards. This takes in a recipe object with
-        properties like name, ingredients etc and returns a nicely formatted
-        JSX object to display on the page. */
-
         let r = props.rdata;
-
         const history = useHistory();
+
         function on_click_delete(e) {
             e.preventDefault();
-
-            axios.get("http://localhost:3001/"+"recipes/"+ r._id +"/delete"); // delete function
-            history.push("/");
+            var del_url = url + '/' +r._id +"/delete";
+            alert("Deleted " + r.name + " (" +r._id +")")
+            axios.get(del_url); // delete function
+            
+            history.push("/")
             window.location.reload();
         }
 
         return (
-            <Container className="p-3">
-                <Header/>
-                <Jumbotron>
+            <Jumbotron>
                     <Container className="p-3">
-                        <Card.Header>{r.name} <Badge variant="primary" className="text-center">creamy,eggy{r.tags}</Badge>  <Button onClick ={on_click_delete} variant="danger">Delete</Button></Card.Header>
+                        <Card.Header>{r.name} <Badge variant="primary" className="text-center">{r.tags.toString()}</Badge>  <Button onClick ={on_click_delete} variant="danger">Delete</Button></Card.Header>
                         <Card className="text-center">
                             <Card.Body>
                                 <Card.Img fluid src={r.image_url} />
@@ -68,18 +63,18 @@ function RecipePage(props) {
                             <Card.Footer className="text-muted">{r.date}</Card.Footer>
                         </Card>
                     </Container>
-                </Jumbotron>
-            </Container>
+            </Jumbotron>
         )
     }
 
 
-
+// {recipes ? Object.keys(recipes).map(r => <RecipeCard key={recipes[r]._id} rdata={recipes[r]} />) : <p>empty</p>}
     return (
         // Gets the recipes object array and returns a RecipeCard of each recipe.
-        <div className="recipe_viewer">
-            {recipes ? Object.keys(recipes).map(r => <RecipeCard key={recipes[r]._id} rdata={recipes[r]} />) : <p>empty</p>}
-        </div>
+        <Container className="p-3">
+            <Header />
+            {recipes ? <RecipeCard rdata={recipes}/> : "e"}
+        </Container>
     )
 }
 

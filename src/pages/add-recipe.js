@@ -36,7 +36,7 @@ function AddRecipe() {
             }
         })
         .then(res => {
-            let redir = url + "/" + res.data._id
+            let redir = process.env.REACT_APP_SERVER_URL + "recipe/" + res.data._id
             alert("Recipe was added! The recipe is visible at: " + redir)
             for (let i = 0; i<form.length; i++) {
                 form[i].value = "";
