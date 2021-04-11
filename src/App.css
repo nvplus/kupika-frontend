@@ -4,13 +4,35 @@
 }
 
 
+.card-img, .card-img-top {
+  height: 100px;
+  width: 100px;
+  display: block;
+  object-fit: scale-down ;
+  
+}
+
 .recipe_card img {
   height: 90px;
   width: 90px;
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  height: 160px;
+  object-fit: scale-down ;
   max-height: 100vh;
+}
+
+.cardImg{
+  width: 260px;
+  height: 260px;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+}
+
+.cardBox{
+  margin-left: 5px;
+  margin-right: 5px;
+  align-items: center;
+  float:center;
 }
 
 

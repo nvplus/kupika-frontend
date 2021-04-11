@@ -65,9 +65,9 @@ function RecipeViewer(props) {
         return (
             
                 
-                    <Card>
-                        <Card.Img variant="top" src={r.image_url}/>
-                            <Card.Body>
+                    <Card className= "cardBox">
+                        <Card.Body>
+                                <Card.Img className = "cardImg" bsPrefix="cardImg" rounded src={r.image_url} fluid  />
                                 <Card.Title>{r.name}</Card.Title>
                                 <Card.Text>{r.description}</Card.Text>
                                 <Button onClick= {on_click_submit} >Go to Recipe</Button>
