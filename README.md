@@ -2,6 +2,8 @@
 
 Created by Vincent Nguyen (nguy2112@mylaurier.ca), Eric Tran (tran9350@mylaurier.ca) and Adam Katt (abdu8270@mylaurier.ca)
 
+Link to the backend project: https://github.com/adamkatt
+
 ## Requirements
 - Node.js
 - npm
